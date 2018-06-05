@@ -1,3 +1,6 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 import { PagesModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,19 +18,25 @@ import { LoginComponent } from './login/login.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { RegisterComponent } from './login/register/register.component';
 import { SharedModule } from './shared/shared.module';
+import { VerMenuComponent } from './ver-menu/ver-menu.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerMenuComponent,
   ],
   imports: [
     BrowserModule,
-    APP_ROUTES,
+    CommonModule,
     PagesModule,
-    SharedModule
+    FormsModule,
+    ReactiveFormsModule,
+    APP_ROUTES,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

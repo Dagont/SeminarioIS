@@ -1,0 +1,131 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">Descripción del menú</h4>
+            </div>
+            <div class="card-body">
+                <form action="#">
+                    <div class="form-body">
+                        <h3 class="card-title">Información General</h3>
+                        <hr>
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Nombre del menú</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="Menú Lunes a Viernes">
+                                </div>
+                            </div>
+                            <br>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Descripción del Menú</label>
+                                    <input type="text" id="lastName" class="form-control" placeholder="Menú con las mejores ofertas para tener en cuenta entre semana">
+                                    <!--<small class="form-control-feedback"> This field has error. </small>--></div>
+                            </div>
+                            <!--/span-->
+                            <div class="form-actions">
+                                &nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>&nbsp;
+                                <button type="button" class="btn btn-inverse">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="p-l-20"><br>
+                <h3 class="font-medium">Productos</h3><br>
+                <button class="btn btn-success"><i class="ti-plus"></i> Asociar nuevo producto</button><br>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre Producto</th>
+                                <th>Precio</th>
+                                <th>Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Hamburguesa con Papas</td>
+                                <td>$14.000</td>
+                                <td><span class="label label-danger">Combo</span> </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Hamburgesa Sencilla</td>
+                                <td>$10.200</td>
+                                <td><span class="label label-info">Producto Terminado</span> </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Hamburguesa Especial</td>
+                                <td>$12.600</td>
+                                <td><span class="label label-info">Producto Terminado</span> </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Hamburguesa con Papas, Gaseosa y Cheesecake</td>
+                                <td>$16.000</td>
+                                <td><span class="label label-danger">Combo</span> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+</script>
